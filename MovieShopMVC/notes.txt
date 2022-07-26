@@ -1,0 +1,114 @@
+﻿M model C# classes that you use for your views
+V view
+C controller talks with the service-> repository->database
+once you get the information, it comes with model, services and the service will be shared with controller
+
+HTTP methods
+GET =>
+POST 
+PUT
+DELETE
+
+
+Advantage of Design pattern
+ Code Maintenable =>
+ Reusable => class library project
+Unit Testing
+CHange the implementation at run time
+
+ Hard dependency 
+ Loose dependency: we want this
+
+ ENTITY
+ all your data
+
+
+ Models
+ the info you want to appear in views.
+
+ Repository COntracts
+ -interface to define contracts -> infrastucture will implement
+ -Data access logic
+
+ Service Contracts
+ -Business Logic =>
+ Create Shipping Lable,
+ Calculate Tax,
+ Register user with Password Hashing
+ Send Confirmation email
+
+ InvalidCreditcardException
+ 
+
+
+ DEPENDENCY INJECTION
+	tightly coupled code
+	<every time CLassB changes will made us to ensure that class that depend on it works with it
+
+	Code through interfaces rather than classes(change the below to interface)
+		class A{
+			ClassB
+		}
+
+		class C{
+			ClassB
+		}
+
+		ClassD{
+			ClassB
+		}
+
+		interfaceB{
+			getByID(int  id);
+		}
+		class ABC:
+
+	loosely coupled code
+
+ new features, fixing existing bugs
+
+ Code Maintenable
+ Design pattern
+
+Constructor Injection
+instead of manuly inject the object, you let it create for you
+
+Homecontroller controller  = new HomeCOntroller();
+
+HomeController controller = new HomeController(new logger, new serviceController());
+
+controller.index();
+
+Entity Framework
+
+1.ADO.NET : Lower Level API for accessing databases(SQL)
+	write lots of code
+	Manual and repeated Code
+	SQLConnection
+	SQLCommand
+2. ORM => Object Relational Mapping
+(MICRO ORM)Dapper +> StackOverFlow(ASP.Net Core)
+Database already 
+
+
+//dont worry about have or not database ready
+Entity framework Microsoft(FULL ORM)
+Create the database with just C# code
+can access the database without sigle line of Sql code,using C# and LINQ
+Save/Update.Delete also
+
+
+EF Core
+Step1. Create entity cassl that you need with all the propertites that matches the columns of the table
+2. download teh EF core packages from Nuget in the solution
+3. Establish the connection string(Appseeting.json) of where you want to create the database
+4.  Create DbContext-> represents your database 
+and Dbset-> Represents your tables properties
+properties
+5 Inject Connection String in to DbContext from your startup project, using Di
+6.Use EF core migration to start creating db usng ms.entityframeworkCore.design
+7.if design package not working use Microsoft.EntityFramework.tools, install it in MVC
+8. Make suire open tools-> NugetPackage manager console
+9. Add your verty first migration with the command called add-migration initialMigration
+10. Once you create the migratoin make sure you check the migration file and then to apply teh migration to the database 
+use command called update-database.

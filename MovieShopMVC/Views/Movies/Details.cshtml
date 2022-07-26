@@ -1,0 +1,90 @@
+﻿
+
+model Application.Models.MovieDetailsModel
+
+
+<div class="container text-center">
+
+  <div class="row" style="background-image: url('@Model.BackdropUrl'); color:white">
+    <div class="col"  style="float: left; display: inline-block;">
+        <img src="@Model.PosterUrl" alt="img" width="290" height="400">
+    </div>
+    <div class="col">
+     
+      <h2 style="text-align:left;">@Model.Title </h2>
+     
+      <h6 style="text-align:left;">@Model.Tagline </h6>
+      <h5 style="text-align:left;">@Model.RunTime m / @Model.ReleaseDate.Year
+
+
+          @foreach(var genre in @Model.Genres){
+               <span class="badge bg-secondary">@genre.Name</span>
+          }        
+      </h5>   
+         
+
+
+   <button style="text-align:left;" type="button" class="btn btn-primary" color="white">
+       RATING
+    </button>
+
+    <br />
+      <h6 style="text-align:left;">@Model.Overview </h6>
+
+    </div>
+    <div class="col">
+<a  asp-controller="Movies"  asp-action="ConfirmationPage" asp-route-id="@Model.Id" class="btn btn-default"><i class="fa fa-edit"></i>
+
+     <button type="button" color="white">Review</button>
+    </a>
+
+      <br />
+      <br />
+      <div>
+
+      </div>
+      <a  asp-controller="Movies"  asp-action="ConfirmationPage"class="btn btn-default"><i class="fa fa-edit"></i>
+              <button type="button" color="white">BUY @Model.Price</button>
+       </a> 
+  
+    </div>
+  </div>
+
+  <br />
+    <div class="row">
+    <div class="col">
+        <h5 style="text-align:left;">MOVIE FACTS</h5>
+        <ul class="list-group">
+            <li style="text-align:left;" class="list-group-item">Release Date <span class="badge bg-secondary">@Model.ReleaseDate</span> </li>
+             <li style="text-align:left;" class="list-group-item">Run Time <span class="badge bg-secondary">@Model.RunTime m</span> </li>
+             <li style="text-align:left;" class="list-group-item">Box office<span class="badge bg-secondary"> $@Model.Revenue</span> </li>
+            <li style="text-align:left;" class="list-group-item">Budget <span class="badge bg-secondary">$@Model.Budget</span> </li>
+         
+        </ul>
+
+        <br></br>
+        
+        <br></br>
+         <h5 style="text-align:left;">TRAILERS<h6>
+           @foreach(var t in @Model.trailers){
+              <a style="float: left;"  href="@t.TrailerUrl">@t.Name</a>
+              <br />
+           }
+ 
+
+    
+    </div>
+    <div class="col">
+      <h5 style="text-align:left;">CAST</h5>
+
+       @foreach(var cast in @Model.casts){
+            <ul class="list-group list-group-horizontal borderless">
+                <li class="list-group-item"><img src="@cast.ProfilePath" alt="profile" width="50" height="50"></li>
+                <li class="list-group-item">@cast.Name</li>
+                <li class="list-group-item">@cast.Character</li>
+            </ul>
+       }
+    </div>
+  </div>  
+
+</div>
