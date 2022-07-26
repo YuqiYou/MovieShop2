@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CelX9vB1VbhOV/5GQPU12mPb7KXeg8fdwHwq1BOcIeG9oHS5hTqzmVaO6VphQY4HwQdzFSfvPNWOguCCddKMGw==",
+  "dgSpecHash": "cR6c4K7EZW+QV6QTENwLyfoqDJ5m8KjnmWBkb6C7/RGHR/JO6SKaRpMtZVsVf/dZeBhacwjZ1GvHzfIxoLp2hg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\16263\\source\\repos\\NET\\MovieShop\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\16263\\source\\repos\\MovieShop\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\16263\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\16263\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

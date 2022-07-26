@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\16263\\source\\repos\\NET\\MovieShop\\ApplicationCore\\ApplicationCore.csproj",
+      "projectUniqueName": "C:\\Users\\16263\\source\\repos\\MovieShop\\ApplicationCore\\ApplicationCore.csproj",
       "projectName": "ApplicationCore",
-      "projectPath": "C:\\Users\\16263\\source\\repos\\NET\\MovieShop\\ApplicationCore\\ApplicationCore.csproj",
+      "projectPath": "C:\\Users\\16263\\source\\repos\\MovieShop\\ApplicationCore\\ApplicationCore.csproj",
       "packagesPath": "C:\\Users\\16263\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\16263\\source\\repos\\NET\\MovieShop\\ApplicationCore\\obj\\",
+      "outputPath": "C:\\Users\\16263\\source\\repos\\MovieShop\\ApplicationCore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\16263\\AppData\\Roaming\\NuGet\\NuGet.Config",

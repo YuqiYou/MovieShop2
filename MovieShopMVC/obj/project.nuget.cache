@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Csy9cs3UPHKodAc6+u1hUKB0craqtdxgKitJ2yrPLzj2FAMad6tN2t2Ge7I0VLv8emVYFhMd3ivYs2Z+i8mxmA==",
+  "dgSpecHash": "HKWWbZYZfv3PHkPV0zBNMTBmLUQVNl9HMtXs+Sd2V7IignEJBcsypYqlflXefcLy4b6nWUGilHHGaXvPeDTEPQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\16263\\source\\repos\\NET\\MovieShop\\MovieShopMVC\\MovieShopMVC.csproj",
+  "projectFilePath": "C:\\Users\\16263\\source\\repos\\MovieShop\\MovieShopMVC\\MovieShopMVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\16263\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\16263\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
