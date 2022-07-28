@@ -9,13 +9,29 @@
       "MovieShopMVC/1.0.0": {
         "dependencies": {
           "ApplicationCore": "1.0.0",
+          "Blazored.Modal": "6.0.1",
           "Infrastructure": "1.0.0",
           "Microsoft.EntityFrameworkCore.Design": "6.0.7",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.7",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.7"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.7",
+          "popper.js": "1.16.1"
         },
         "runtime": {
           "MovieShopMVC.dll": {}
+        }
+      },
+      "Blazored.Modal/6.0.1": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.1.6",
+          "Microsoft.AspNetCore.Components.Web": "3.1.6",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
+          "Microsoft.JSInterop.WebAssembly": "3.2.1"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Blazored.Modal.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Humanizer.Core/2.8.26": {
@@ -52,6 +68,34 @@
         }
       },
       "MessagePackAnalyzer/2.1.152": {},
+      "Microsoft.AspNetCore.Authorization/3.1.6": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Metadata": "3.1.6",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.0",
+          "Microsoft.Extensions.Options": "6.0.0"
+        }
+      },
+      "Microsoft.AspNetCore.Components/3.1.6": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authorization": "3.1.6",
+          "Microsoft.AspNetCore.Components.Analyzers": "3.1.6",
+          "Microsoft.JSInterop": "3.1.6"
+        }
+      },
+      "Microsoft.AspNetCore.Components.Analyzers/3.1.6": {},
+      "Microsoft.AspNetCore.Components.Forms/3.1.6": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.1.6"
+        }
+      },
+      "Microsoft.AspNetCore.Components.Web/3.1.6": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.1.6",
+          "Microsoft.AspNetCore.Components.Forms": "3.1.6",
+          "Microsoft.Extensions.DependencyInjection": "6.0.0",
+          "Microsoft.JSInterop": "3.1.6"
+        }
+      },
       "Microsoft.AspNetCore.Cryptography.Internal/6.0.7": {
         "runtime": {
           "lib/net6.0/Microsoft.AspNetCore.Cryptography.Internal.dll": {
@@ -71,6 +115,7 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Metadata/3.1.6": {},
       "Microsoft.AspNetCore.Razor.Language/6.0.0": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Razor.Language.dll": {
@@ -1074,6 +1119,18 @@
           }
         }
       },
+      "Microsoft.JSInterop/3.1.6": {},
+      "Microsoft.JSInterop.WebAssembly/3.2.1": {
+        "dependencies": {
+          "Microsoft.JSInterop": "3.1.6"
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.JSInterop.WebAssembly.dll": {
+            "assemblyVersion": "3.2.1.0",
+            "fileVersion": "3.200.120.31714"
+          }
+        }
+      },
       "Microsoft.NET.StringTools/1.0.0": {
         "dependencies": {
           "System.Memory": "4.5.4",
@@ -1401,6 +1458,7 @@
           }
         }
       },
+      "popper.js/1.16.1": {},
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
@@ -2252,6 +2310,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Blazored.Modal/6.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-a7FwVYU2nDL6MBvtBnkp8GSLTEdZU4eKcN8ZcfhQNh4tFwGRKsIvz9jN+6eIEGV1PdI2rbzHkif/igyOcfC8Zg==",
+      "path": "blazored.modal/6.0.1",
+      "hashPath": "blazored.modal.6.0.1.nupkg.sha512"
+    },
     "Humanizer.Core/2.8.26": {
       "type": "package",
       "serviceable": true,
@@ -2280,6 +2345,41 @@
       "path": "messagepackanalyzer/2.1.152",
       "hashPath": "messagepackanalyzer.2.1.152.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.Authorization/3.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-n0EC0W8jRpM2o1sKKYQpFuvE1sgW7juyEbhVZPcHy9VnHyZYvcIBHVJ6aPCtwqf/16KyqIB1XDVjPnPgyui47Q==",
+      "path": "microsoft.aspnetcore.authorization/3.1.6",
+      "hashPath": "microsoft.aspnetcore.authorization.3.1.6.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Components/3.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-mNBFDx5rbm5IHpMymGuDo9iGf9L4JWwE0Ho4wXQOdJRKhk7DhuebbIgWFcshsEmDqZPuaX1B4PkifJNDq/3KCw==",
+      "path": "microsoft.aspnetcore.components/3.1.6",
+      "hashPath": "microsoft.aspnetcore.components.3.1.6.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Components.Analyzers/3.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uX+Dl3uPqlGmKBmQRn9QKfx0cgXXyfr9JF8aaBKgi+mexwyGEYFTMXleb9AHK9aofwwMivwfUHi/OmxgcB4YYw==",
+      "path": "microsoft.aspnetcore.components.analyzers/3.1.6",
+      "hashPath": "microsoft.aspnetcore.components.analyzers.3.1.6.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Components.Forms/3.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ypqYTvv478N19dRTXsELjluHyW+/aASauBdLvVL4zbmA5BMMdQy69LKTcXXfgqhzC1N/KYusPoMPCasD1F7Fwg==",
+      "path": "microsoft.aspnetcore.components.forms/3.1.6",
+      "hashPath": "microsoft.aspnetcore.components.forms.3.1.6.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Components.Web/3.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-u6xnpxIHf20aiJ+B2iyZKzsisc2aMkKV2JI/wRWov0M/6FLqLwtOsjRidtOAd5g3eJLYxE6fxOOC8KQqbYNjog==",
+      "path": "microsoft.aspnetcore.components.web/3.1.6",
+      "hashPath": "microsoft.aspnetcore.components.web.3.1.6.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Cryptography.Internal/6.0.7": {
       "type": "package",
       "serviceable": true,
@@ -2293,6 +2393,13 @@
       "sha512": "sha512-iKQgXepVT2n98sheTQWhr/1EEzVspsVZKVL9GYhb8AIXw7J9fnJ2sLkS10SvwXlH9TP9vP3zOnOdW72O6g5lFg==",
       "path": "microsoft.aspnetcore.cryptography.keyderivation/6.0.7",
       "hashPath": "microsoft.aspnetcore.cryptography.keyderivation.6.0.7.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Metadata/3.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CPD6ukxTPpvtm5GfAlgRbUPF7D+eo8K7rMVgL/kLrz4aTT6gb/c0uet2ISRIO615zIS2N52ZZwLcX9hmeQhVGg==",
+      "path": "microsoft.aspnetcore.metadata/3.1.6",
+      "hashPath": "microsoft.aspnetcore.metadata.3.1.6.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Razor.Language/6.0.0": {
       "type": "package",
@@ -2623,6 +2730,20 @@
       "path": "microsoft.identitymodel.tokens/6.8.0",
       "hashPath": "microsoft.identitymodel.tokens.6.8.0.nupkg.sha512"
     },
+    "Microsoft.JSInterop/3.1.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-k/AaZDugrwLO4gkLrPkFiWIzjC0BxPGF2yds6P6PYXNG4Jw/od3UZJrVSRLakQPDsnXLMDiyg7uGWtDI17FtSQ==",
+      "path": "microsoft.jsinterop/3.1.6",
+      "hashPath": "microsoft.jsinterop.3.1.6.nupkg.sha512"
+    },
+    "Microsoft.JSInterop.WebAssembly/3.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wYKx4YeBTnv1bzKZtdsWH0O9OmmYm7zq56QkKCUdl1hDg4Gn0lmCDfYBC0r1k5/Wh64IveuWwpkyTWjqCmp4pg==",
+      "path": "microsoft.jsinterop.webassembly/3.2.1",
+      "hashPath": "microsoft.jsinterop.webassembly.3.2.1.nupkg.sha512"
+    },
     "Microsoft.NET.StringTools/1.0.0": {
       "type": "package",
       "serviceable": true,
@@ -2797,6 +2918,13 @@
       "sha512": "sha512-+o507LXjsN1YVAgmpqKCQZ70cLsXDoVmR8H0Wgy0muiFnOhkXN2+a6PGFBAIuA7qJch/umTYu1hp7Dlh1Qcrgg==",
       "path": "nuget.versioning/6.2.1",
       "hashPath": "nuget.versioning.6.2.1.nupkg.sha512"
+    },
+    "popper.js/1.16.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6GiVZho0vwBnId7pK7NLTjMGq4F0/VE65I08CCeKlarVoUt1w8SGTtJmhNo/0pK38EGUP/xbT4+OkWB8UTMPBw==",
+      "path": "popper.js/1.16.1",
+      "hashPath": "popper.js.1.16.1.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",

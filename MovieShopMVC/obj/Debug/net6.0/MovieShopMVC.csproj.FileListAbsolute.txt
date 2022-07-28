@@ -330,3 +330,5 @@ C:\Users\16263\source\repos\MovieShop\MovieShopMVC\obj\Debug\net6.0\MovieShopMVC
 C:\Users\16263\source\repos\MovieShop\MovieShopMVC\obj\Debug\net6.0\ref\MovieShopMVC.dll
 C:\Users\16263\source\repos\MovieShop\MovieShopMVC\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\16263\source\repos\MovieShop\MovieShopMVC\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\16263\source\repos\MovieShop\MovieShopMVC\bin\Debug\net6.0\Blazored.Modal.dll
+C:\Users\16263\source\repos\MovieShop\MovieShopMVC\bin\Debug\net6.0\Microsoft.JSInterop.WebAssembly.dll

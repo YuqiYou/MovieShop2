@@ -4,6 +4,8 @@ using Infrastructure.Data;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using MovieShopMVC.Infra;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,9 @@ builder.Services.AddScoped<IGenreRepository, GenreRepository>();
 builder.Services.AddScoped<IGenreService, GenreService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<ICurrentUser, CurrentUser>();
+
+builder.Services.AddHttpContextAccessor();
 
 
 // read the connection string from appsettings.json and inject connection string in to DbContext
@@ -25,6 +30,14 @@ builder.Services.AddDbContext<MovieShopDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MovieShopDbConnection"));
 });
 
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.Cookie.Name = "MovieShopAuthCookie";
+        options.ExpireTimeSpan = TimeSpan.FromHours(2);
+        options.LoginPath = "/account/login";
+    });
 
 // if controllername = ho,e then substite MocieMockservie for IMovieSerovce
 
@@ -47,6 +60,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+// Middlewares
+app.UseAuthentication();
 
 app.UseAuthorization();
 

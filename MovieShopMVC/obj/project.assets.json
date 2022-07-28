@@ -2,6 +2,27 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "Blazored.Modal/6.0.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.1.6",
+          "Microsoft.AspNetCore.Components.Web": "3.1.6",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.6",
+          "Microsoft.JSInterop.WebAssembly": "3.2.1"
+        },
+        "compile": {
+          "lib/netstandard2.1/Blazored.Modal.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Blazored.Modal.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazored.Modal.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazored.Modal.props": {}
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -41,6 +62,67 @@
       "MessagePackAnalyzer/2.1.152": {
         "type": "package"
       },
+      "Microsoft.AspNetCore.Authorization/3.1.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Metadata": "3.1.6",
+          "Microsoft.Extensions.Logging.Abstractions": "3.1.6",
+          "Microsoft.Extensions.Options": "3.1.6"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authorization.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Authorization.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Components/3.1.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Authorization": "3.1.6",
+          "Microsoft.AspNetCore.Components.Analyzers": "3.1.6",
+          "Microsoft.JSInterop": "3.1.6"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Components.Analyzers/3.1.6": {
+        "type": "package",
+        "build": {
+          "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
+        }
+      },
+      "Microsoft.AspNetCore.Components.Forms/3.1.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.1.6"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.Forms.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.Forms.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Components.Web/3.1.6": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "3.1.6",
+          "Microsoft.AspNetCore.Components.Forms": "3.1.6",
+          "Microsoft.Extensions.DependencyInjection": "3.1.6",
+          "Microsoft.JSInterop": "3.1.6"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.Web.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.Web.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Cryptography.Internal/6.0.7": {
         "type": "package",
         "compile": {
@@ -60,6 +142,15 @@
         },
         "runtime": {
           "lib/net6.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Metadata/3.1.6": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Metadata.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Metadata.dll": {}
         }
       },
       "Microsoft.AspNetCore.Razor.Language/6.0.0": {
@@ -1211,6 +1302,27 @@
           "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll": {}
         }
       },
+      "Microsoft.JSInterop/3.1.6": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.JSInterop.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.JSInterop.dll": {}
+        }
+      },
+      "Microsoft.JSInterop.WebAssembly/3.2.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.JSInterop": "3.1.6"
+        },
+        "compile": {
+          "lib/netstandard2.1/Microsoft.JSInterop.WebAssembly.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.JSInterop.WebAssembly.dll": {}
+        }
+      },
       "Microsoft.NET.StringTools/1.0.0": {
         "type": "package",
         "dependencies": {
@@ -1602,6 +1714,9 @@
         "runtime": {
           "lib/netstandard2.0/NuGet.Versioning.dll": {}
         }
+      },
+      "popper.js/1.16.1": {
+        "type": "package"
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
@@ -3114,6 +3229,25 @@
     }
   },
   "libraries": {
+    "Blazored.Modal/6.0.1": {
+      "sha512": "a7FwVYU2nDL6MBvtBnkp8GSLTEdZU4eKcN8ZcfhQNh4tFwGRKsIvz9jN+6eIEGV1PdI2rbzHkif/igyOcfC8Zg==",
+      "type": "package",
+      "path": "blazored.modal/6.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "blazored.modal.6.0.1.nupkg.sha512",
+        "blazored.modal.nuspec",
+        "build/Blazored.Modal.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazored.Modal.props",
+        "buildTransitive/Blazored.Modal.props",
+        "icon.png",
+        "lib/netstandard2.1/Blazored.Modal.dll",
+        "staticwebassets/blazored-modal.css",
+        "staticwebassets/blazored.modal.js"
+      ]
+    },
     "Humanizer.Core/2.8.26": {
       "sha512": "OiKusGL20vby4uDEswj2IgkdchC1yQ6rwbIkZDVBPIR6al2b7n3pC91elBul9q33KaBgRKhbZH3+2Ur4fnWx2A==",
       "type": "package",
@@ -3176,6 +3310,90 @@
         "tools/uninstall.ps1"
       ]
     },
+    "Microsoft.AspNetCore.Authorization/3.1.6": {
+      "sha512": "n0EC0W8jRpM2o1sKKYQpFuvE1sgW7juyEbhVZPcHy9VnHyZYvcIBHVJ6aPCtwqf/16KyqIB1XDVjPnPgyui47Q==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authorization/3.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Authorization.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Authorization.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Authorization.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Authorization.xml",
+        "microsoft.aspnetcore.authorization.3.1.6.nupkg.sha512",
+        "microsoft.aspnetcore.authorization.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Components/3.1.6": {
+      "sha512": "mNBFDx5rbm5IHpMymGuDo9iGf9L4JWwE0Ho4wXQOdJRKhk7DhuebbIgWFcshsEmDqZPuaX1B4PkifJNDq/3KCw==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.components/3.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.txt",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Components.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Components.xml",
+        "microsoft.aspnetcore.components.3.1.6.nupkg.sha512",
+        "microsoft.aspnetcore.components.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Components.Analyzers/3.1.6": {
+      "sha512": "uX+Dl3uPqlGmKBmQRn9QKfx0cgXXyfr9JF8aaBKgi+mexwyGEYFTMXleb9AHK9aofwwMivwfUHi/OmxgcB4YYw==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.components.analyzers/3.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.txt",
+        "analyzers/dotnet/cs/Microsoft.AspNetCore.Components.Analyzers.dll",
+        "build/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets",
+        "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets",
+        "microsoft.aspnetcore.components.analyzers.3.1.6.nupkg.sha512",
+        "microsoft.aspnetcore.components.analyzers.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Components.Forms/3.1.6": {
+      "sha512": "ypqYTvv478N19dRTXsELjluHyW+/aASauBdLvVL4zbmA5BMMdQy69LKTcXXfgqhzC1N/KYusPoMPCasD1F7Fwg==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.components.forms/3.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.txt",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.Forms.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.Forms.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Components.Forms.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Components.Forms.xml",
+        "microsoft.aspnetcore.components.forms.3.1.6.nupkg.sha512",
+        "microsoft.aspnetcore.components.forms.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Components.Web/3.1.6": {
+      "sha512": "u6xnpxIHf20aiJ+B2iyZKzsisc2aMkKV2JI/wRWov0M/6FLqLwtOsjRidtOAd5g3eJLYxE6fxOOC8KQqbYNjog==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.components.web/3.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.txt",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.Web.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.Web.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Components.Web.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Components.Web.xml",
+        "microsoft.aspnetcore.components.web.3.1.6.nupkg.sha512",
+        "microsoft.aspnetcore.components.web.nuspec"
+      ]
+    },
     "Microsoft.AspNetCore.Cryptography.Internal/6.0.7": {
       "sha512": "BYqRUiLXtOfKNUj2Pt5kdvrKkVTgUAZvEL4kuBPMrczNtLq7z4zZH2nXXYD/h353ZHV0r1+jkl1PXrlxfIPYyg==",
       "type": "package",
@@ -3212,6 +3430,23 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
         "microsoft.aspnetcore.cryptography.keyderivation.6.0.7.nupkg.sha512",
         "microsoft.aspnetcore.cryptography.keyderivation.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Metadata/3.1.6": {
+      "sha512": "CPD6ukxTPpvtm5GfAlgRbUPF7D+eo8K7rMVgL/kLrz4aTT6gb/c0uet2ISRIO615zIS2N52ZZwLcX9hmeQhVGg==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.metadata/3.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Metadata.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Metadata.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Metadata.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Metadata.xml",
+        "microsoft.aspnetcore.metadata.3.1.6.nupkg.sha512",
+        "microsoft.aspnetcore.metadata.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Razor.Language/6.0.0": {
@@ -4641,6 +4876,37 @@
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
+    "Microsoft.JSInterop/3.1.6": {
+      "sha512": "k/AaZDugrwLO4gkLrPkFiWIzjC0BxPGF2yds6P6PYXNG4Jw/od3UZJrVSRLakQPDsnXLMDiyg7uGWtDI17FtSQ==",
+      "type": "package",
+      "path": "microsoft.jsinterop/3.1.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/netcoreapp3.1/Microsoft.JSInterop.dll",
+        "lib/netcoreapp3.1/Microsoft.JSInterop.xml",
+        "lib/netstandard2.0/Microsoft.JSInterop.dll",
+        "lib/netstandard2.0/Microsoft.JSInterop.xml",
+        "microsoft.jsinterop.3.1.6.nupkg.sha512",
+        "microsoft.jsinterop.nuspec"
+      ]
+    },
+    "Microsoft.JSInterop.WebAssembly/3.2.1": {
+      "sha512": "wYKx4YeBTnv1bzKZtdsWH0O9OmmYm7zq56QkKCUdl1hDg4Gn0lmCDfYBC0r1k5/Wh64IveuWwpkyTWjqCmp4pg==",
+      "type": "package",
+      "path": "microsoft.jsinterop.webassembly/3.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.txt",
+        "lib/netstandard2.1/Microsoft.JSInterop.WebAssembly.dll",
+        "lib/netstandard2.1/Microsoft.JSInterop.WebAssembly.xml",
+        "microsoft.jsinterop.webassembly.3.2.1.nupkg.sha512",
+        "microsoft.jsinterop.webassembly.nuspec"
+      ]
+    },
     "Microsoft.NET.StringTools/1.0.0": {
       "sha512": "ZYVcoDM0LnSyT5nWoRGfShYdOecCw2sOXWwP6j1Z0u48Xq3+BVvZ+EiPCX9/8Gz439giW+O1H1kWF9Eb/w6rVg==",
       "type": "package",
@@ -5584,6 +5850,108 @@
         "lib/netstandard2.0/NuGet.Versioning.xml",
         "nuget.versioning.6.2.1.nupkg.sha512",
         "nuget.versioning.nuspec"
+      ]
+    },
+    "popper.js/1.16.1": {
+      "sha512": "6GiVZho0vwBnId7pK7NLTjMGq4F0/VE65I08CCeKlarVoUt1w8SGTtJmhNo/0pK38EGUP/xbT4+OkWB8UTMPBw==",
+      "type": "package",
+      "path": "popper.js/1.16.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/Scripts/README.md",
+        "content/Scripts/esm/popper-utils.js",
+        "content/Scripts/esm/popper-utils.js.map",
+        "content/Scripts/esm/popper-utils.min.js",
+        "content/Scripts/esm/popper-utils.min.js.map",
+        "content/Scripts/esm/popper.js",
+        "content/Scripts/esm/popper.js.map",
+        "content/Scripts/esm/popper.min.js",
+        "content/Scripts/esm/popper.min.js.map",
+        "content/Scripts/index.d.ts",
+        "content/Scripts/index.js.flow",
+        "content/Scripts/popper-utils.js",
+        "content/Scripts/popper-utils.js.map",
+        "content/Scripts/popper-utils.min.js",
+        "content/Scripts/popper-utils.min.js.map",
+        "content/Scripts/popper.js",
+        "content/Scripts/popper.js.map",
+        "content/Scripts/popper.min.js",
+        "content/Scripts/popper.min.js.map",
+        "content/Scripts/src/index.js",
+        "content/Scripts/src/methods/defaults.js",
+        "content/Scripts/src/methods/destroy.js",
+        "content/Scripts/src/methods/disableEventListeners.js",
+        "content/Scripts/src/methods/enableEventListeners.js",
+        "content/Scripts/src/methods/placements.js",
+        "content/Scripts/src/methods/update.js",
+        "content/Scripts/src/modifiers/applyStyle.js",
+        "content/Scripts/src/modifiers/arrow.js",
+        "content/Scripts/src/modifiers/computeStyle.js",
+        "content/Scripts/src/modifiers/flip.js",
+        "content/Scripts/src/modifiers/hide.js",
+        "content/Scripts/src/modifiers/index.js",
+        "content/Scripts/src/modifiers/inner.js",
+        "content/Scripts/src/modifiers/keepTogether.js",
+        "content/Scripts/src/modifiers/offset.js",
+        "content/Scripts/src/modifiers/preventOverflow.js",
+        "content/Scripts/src/modifiers/shift.js",
+        "content/Scripts/src/utils/clockwise.js",
+        "content/Scripts/src/utils/computeAutoPlacement.js",
+        "content/Scripts/src/utils/debounce.js",
+        "content/Scripts/src/utils/find.js",
+        "content/Scripts/src/utils/findCommonOffsetParent.js",
+        "content/Scripts/src/utils/findIndex.js",
+        "content/Scripts/src/utils/getBordersSize.js",
+        "content/Scripts/src/utils/getBoundaries.js",
+        "content/Scripts/src/utils/getBoundingClientRect.js",
+        "content/Scripts/src/utils/getClientRect.js",
+        "content/Scripts/src/utils/getFixedPositionOffsetParent.js",
+        "content/Scripts/src/utils/getOffsetParent.js",
+        "content/Scripts/src/utils/getOffsetRect.js",
+        "content/Scripts/src/utils/getOffsetRectRelativeToArbitraryNode.js",
+        "content/Scripts/src/utils/getOppositePlacement.js",
+        "content/Scripts/src/utils/getOppositeVariation.js",
+        "content/Scripts/src/utils/getOuterSizes.js",
+        "content/Scripts/src/utils/getParentNode.js",
+        "content/Scripts/src/utils/getPopperOffsets.js",
+        "content/Scripts/src/utils/getReferenceNode.js",
+        "content/Scripts/src/utils/getReferenceOffsets.js",
+        "content/Scripts/src/utils/getRoot.js",
+        "content/Scripts/src/utils/getRoundedOffsets.js",
+        "content/Scripts/src/utils/getScroll.js",
+        "content/Scripts/src/utils/getScrollParent.js",
+        "content/Scripts/src/utils/getStyleComputedProperty.js",
+        "content/Scripts/src/utils/getSupportedPropertyName.js",
+        "content/Scripts/src/utils/getViewportOffsetRectRelativeToArtbitraryNode.js",
+        "content/Scripts/src/utils/getWindow.js",
+        "content/Scripts/src/utils/getWindowSizes.js",
+        "content/Scripts/src/utils/includeScroll.js",
+        "content/Scripts/src/utils/index.js",
+        "content/Scripts/src/utils/isBrowser.js",
+        "content/Scripts/src/utils/isFixed.js",
+        "content/Scripts/src/utils/isFunction.js",
+        "content/Scripts/src/utils/isIE.js",
+        "content/Scripts/src/utils/isModifierEnabled.js",
+        "content/Scripts/src/utils/isModifierRequired.js",
+        "content/Scripts/src/utils/isNumeric.js",
+        "content/Scripts/src/utils/isOffsetContainer.js",
+        "content/Scripts/src/utils/removeEventListeners.js",
+        "content/Scripts/src/utils/runModifiers.js",
+        "content/Scripts/src/utils/setAttributes.js",
+        "content/Scripts/src/utils/setStyles.js",
+        "content/Scripts/src/utils/setupEventListeners.js",
+        "content/Scripts/umd/popper-utils.js",
+        "content/Scripts/umd/popper-utils.js.map",
+        "content/Scripts/umd/popper-utils.min.js",
+        "content/Scripts/umd/popper-utils.min.js.map",
+        "content/Scripts/umd/popper.js",
+        "content/Scripts/umd/popper.js.flow",
+        "content/Scripts/umd/popper.js.map",
+        "content/Scripts/umd/popper.min.js",
+        "content/Scripts/umd/popper.min.js.map",
+        "popper.js.1.16.1.nupkg.sha512",
+        "popper.js.nuspec"
       ]
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -9553,10 +9921,12 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "ApplicationCore >= 1.0.0",
+      "Blazored.Modal >= 6.0.1",
       "Infrastructure >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.7",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.7",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.7"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.7",
+      "popper.js >= 1.16.1"
     ]
   },
   "packageFolders": {
@@ -9605,6 +9975,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "Blazored.Modal": {
+            "target": "Package",
+            "version": "[6.0.1, )"
+          },
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
@@ -9620,6 +9994,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[6.0.7, )"
+          },
+          "popper.js": {
+            "target": "Package",
+            "version": "[1.16.1, )"
           }
         },
         "imports": [

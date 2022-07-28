@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using ApplicationCore.Entities;
-using ApplicationCore.Models;
+﻿using ApplicationCore.Models;
 using ApplicationCore.RepositoryContracts;
 using ApplicationCore.ServiceContracts;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using System.Security.Cryptography;
+using ApplicationCore.Entities;
 
 namespace Infrastructure.Services
 {
-    public class AccountService:IAccountService
+    public class AccountService : IAccountService
     {
-
         private readonly IUserRepository _userRepository;
 
         public AccountService(IUserRepository userRepository)
@@ -24,31 +23,38 @@ namespace Infrastructure.Services
 
         public async Task<bool> CreateUser(UserRegisterModel model)
         {
-            //1 check if the email exists in db
+            // step 1: chek if the email exists in database
             var user = await _userRepository.GetUserByEmail(model.Email);
-            if(user != null)
+            if (user != null)
             {
                 throw new Exception("Email already exists, please try to login");
             }
-
-
-            //continue with registration
-            //create a unique salt and hash the password with salt
-
             var salt = GetRandomSalt();
-            var hashedPassword = GetHashedPasswordWithSalt(model.Password,salt);
 
-            //save the User into User Table using User Repository
-            var dbUser = new User {Email = model.Email,FirstName = model.FirstName, LastName = model.LastName,
-                DateOfBirth = model.DateOfBirth,Salt = salt, HashedPassword = hashedPassword
+            var hashedPassword = GetHashedPasswordWithSalt(model.Password, salt);
+
+            // continue with registration
+            // create a unique salt and hash the passowrd with salt
+
+            // save the User into User Table using User Repository
+
+            var dbUser = new User
+            {
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                DateOfBirth = model.DateOfBirth,
+                Salt = salt,
+                HashedPassword = hashedPassword
             };
 
             var savedUser = await _userRepository.AddUser(dbUser);
-            if(savedUser.Id > 0)
+            if (savedUser.Id > 0)
             {
                 return true;
             }
             return false;
+
         }
 
         private string GetRandomSalt()
@@ -61,6 +67,7 @@ namespace Infrastructure.Services
 
             return Convert.ToBase64String(randomBytes);
         }
+
         private string GetHashedPasswordWithSalt(string password, string salt)
         {
             var hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
@@ -72,7 +79,7 @@ namespace Infrastructure.Services
             return hashed;
         }
 
-        public async Task<bool> ValidateUser(UserLoginModel model)
+        public async Task<UserInfoResponseModel> ValidateUser(UserLoginModel model)
         {
             var dbUser = await _userRepository.GetUserByEmail(model.Email);
             if (dbUser == null)
@@ -84,9 +91,9 @@ namespace Infrastructure.Services
 
             if (hashedPassword == dbUser.HashedPassword)
             {
-                return true;
+                return new UserInfoResponseModel { Id = dbUser.Id, Email = dbUser.Email, FirstName = dbUser.FirstName, LastName = dbUser.LastName };
             }
-            return false;
+            return null;
 
         }
     }

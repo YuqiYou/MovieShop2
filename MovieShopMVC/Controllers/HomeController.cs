@@ -1,4 +1,5 @@
-﻿using ApplicationCore.ServiceContracts;
+﻿using ApplicationCore.Models;
+using ApplicationCore.ServiceContracts;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using MovieShopMVC.Models;
@@ -45,5 +46,8 @@ namespace MovieShopMVC.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+
     }
 }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "S+RZ9ITMMMN/eoRl+tVWAIjCXJZ62rVHVCX45Am3oJI=",
+  "Hash": "eyxw1HGS5pmxD3NLjXwffxUdRY420kzGS/vn8eIDLGo=",
   "Source": "MovieShopMVC",
   "BasePath": "_content/MovieShopMVC",
   "Mode": "Default",
@@ -16,6 +16,40 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\16263\\.nuget\\packages\\blazored.modal\\6.0.1\\staticwebassets\\blazored.modal.js",
+      "SourceId": "Blazored.Modal",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\16263\\.nuget\\packages\\blazored.modal\\6.0.1\\staticwebassets\\",
+      "BasePath": "_content/Blazored.Modal",
+      "RelativePath": "blazored.modal.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\16263\\.nuget\\packages\\blazored.modal\\6.0.1\\staticwebassets\\blazored.modal.js"
+    },
+    {
+      "Identity": "C:\\Users\\16263\\.nuget\\packages\\blazored.modal\\6.0.1\\staticwebassets\\blazored-modal.css",
+      "SourceId": "Blazored.Modal",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\16263\\.nuget\\packages\\blazored.modal\\6.0.1\\staticwebassets\\",
+      "BasePath": "_content/Blazored.Modal",
+      "RelativePath": "blazored-modal.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\16263\\.nuget\\packages\\blazored.modal\\6.0.1\\staticwebassets\\blazored-modal.css"
+    },
     {
       "Identity": "C:\\Users\\16263\\source\\repos\\MovieShop\\MovieShopMVC\\obj\\Debug\\net6.0\\scopedcss\\bundle\\MovieShopMVC.styles.css",
       "SourceId": "MovieShopMVC",
