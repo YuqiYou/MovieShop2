@@ -12,5 +12,9 @@ namespace ApplicationCore.RepositoryContracts
         Task<User> GetUserByEmail(string email);
 
         Task<User> AddUser(User user);
+
+        //Task<P> AddPurchased();
+
+        //Task<Favorite> AddFavorite(int UserId, int MovieId);
     }
 }

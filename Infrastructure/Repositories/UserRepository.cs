@@ -20,6 +20,11 @@ namespace Infrastructure.Repositories
             _movieshopDbContext = movieshopDbContext;
         }
 
+        //public Task<Favorite> AddFavorite(int UserId, int MovieId)
+        //{
+        //   _movieshopDbContext.Favorites.Add
+        //}
+
         public async Task<User> AddUser(User user)
         {
             _movieshopDbContext.Users.Add(user);//add to memory
@@ -32,5 +37,8 @@ namespace Infrastructure.Repositories
             var user = await _movieshopDbContext.Users.FirstOrDefaultAsync(u=>u.Email == email);
             return user;
         }
+
+        
+
     }
 }
