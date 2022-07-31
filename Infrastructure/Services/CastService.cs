@@ -21,11 +21,21 @@ namespace Infrastructure.Services
 
         public  async Task<CastModel> GetCastDetails(int id)
         {
-            //var casts = await _castRepository.GetById(id);
-            //var castModel = casts.Select(g => new CastModel { Id = g.Id, Name = g.Name }).ToList();
-            //return castsModel;
+            var Moviecasts = await _castRepository.GetById(id);
+            var castModel = new CastModel
+            {
 
-            throw new NotImplementedException();
+                Id = Moviecasts.MovieId,
+                Name = Moviecasts.Movie.Title,
+                ProfilePath = Moviecasts.Cast.ProfilePath,
+                Character = Moviecasts.Character
+
+            };
+
+
+            return castModel;
+
+         
         }
     }
 }

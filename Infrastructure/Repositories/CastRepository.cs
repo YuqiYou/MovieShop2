@@ -23,16 +23,13 @@ namespace Infrastructure.Repositories
 
  
 
-        public async Task<Movie> GetById(int id)
+        public async Task<MovieCast> GetById(int id)
         {
-            var movieDetails = await _movieshopDbContext.Movies
-                           .Include(m => m.GenresOfMovie)
-                           .ThenInclude(m => m.Genre)
-                           .Include(m => m.CastsOfMovie)
-                           .ThenInclude(m => m.Cast)
-                           .Include(m => m.Trailers)
-                           .FirstOrDefaultAsync(m => m.Id == id);
-            return movieDetails;
+            var castDetails = await _movieshopDbContext.MovieCasts
+                .Include(m=>m.Movie)
+                .Include(m=>m.Cast)
+                .FirstOrDefaultAsync(m => m.CastId == id);
+            return castDetails;
         }
     }
 }

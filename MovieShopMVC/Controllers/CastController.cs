@@ -19,10 +19,10 @@ namespace MovieShopMVC.Controllers
             //go to movie service- movie repo and get movie details from movie table
 
             ////Server -> IIS -Windows 
-            //var castDetails = await _castService.GetCastDetail(id);
-            //return View(castDetails);
+            var castDetails = await _castService.GetCastDetails(id);
+            return View(castDetails);
 
-            return View();
+
         }
 
       
