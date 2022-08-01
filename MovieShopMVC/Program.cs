@@ -18,10 +18,18 @@ builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 builder.Services.AddScoped<IGenreRepository, GenreRepository>();
 builder.Services.AddScoped<IGenreService, GenreService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<ICurrentUser, CurrentUser>();
 builder.Services.AddScoped<ICastService, CastService>();
+
 builder.Services.AddScoped<ICastRepository,CastRepository>();
+
+builder.Services.AddScoped<IFavoriteRepository, FavoriteRepository>();
+
+
+
 
 builder.Services.AddHttpContextAccessor();
 

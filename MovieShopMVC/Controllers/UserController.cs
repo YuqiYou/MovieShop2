@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Models;
+using ApplicationCore.ServiceContracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MovieShopMVC.Infra;
@@ -9,6 +10,7 @@ namespace MovieShopMVC.Controllers
     public class UserController : Controller
     {
         private readonly ICurrentUser _currentUser;
+        //private readonly IUserService _userService;
 
         public UserController(ICurrentUser currentUser)
         {
@@ -27,6 +29,7 @@ namespace MovieShopMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Favorites()
         {
+            var userId = _currentUser.UserId;
             return View();
         }
 

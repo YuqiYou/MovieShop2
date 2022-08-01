@@ -15,6 +15,6 @@ namespace ApplicationCore.RepositoryContracts
 
         //Task<P> AddPurchased();
 
-        //Task<Favorite> AddFavorite(int UserId, int MovieId);
+     
     }
 }

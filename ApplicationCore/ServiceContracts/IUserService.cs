@@ -1,4 +1,5 @@
-﻿using ApplicationCore.Models;
+﻿using ApplicationCore.Entities;
+using ApplicationCore.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +17,8 @@ namespace ApplicationCore.ServiceContracts
         Task GetPurchasesDetails(int userId, int movieId);
         Task AddFavorite(FavoriteRequestModel favoriteRequest);
         Task RemoveFavorite(FavoriteRequestModel favoriteRequest);
-        Task FavoriteExists(int id, int movieId);
-        Task GetAllFavoritesForUser(int id);
+        Task<bool> FavoriteExists(int id, int movieId);
+        Task <List<Favorite>> GetAllFavoritesForUser(int id);
         Task AddMovieReview(ReviewRequestModel reviewRequest);
         Task UpdateMovieReview(ReviewRequestModel reviewRequest);
         Task DeleteMovieReview(int userId, int movieId);

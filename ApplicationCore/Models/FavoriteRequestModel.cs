@@ -12,5 +12,7 @@ namespace ApplicationCore.Models
         public int MovieId { get; set; }
         public int UserId { get; set; }
 
+        public string Email { get; set; }
+
     }
 }
