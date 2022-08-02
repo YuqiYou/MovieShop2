@@ -21,16 +21,19 @@ namespace Infrastructure.Repositories
 
         public async Task<Favorite> AddFavorite(Favorite favorite)
         {
-            _movieshopDbContext.Favorites.Add(favorite);
+             _movieshopDbContext.Favorites.Add(favorite);
             await _movieshopDbContext.SaveChangesAsync();
 
             return favorite;
         }
 
+        //PASSED
         public async Task<List<Favorite>> getAllFavorites(int id)
         {
-            var Favorites = await _movieshopDbContext.Favorites.Where(f => f.UserId == id)
-                .ToListAsync(); 
+            var Favorites = await _movieshopDbContext.Favorites
+                .Include(f => f.User)
+                .Include(f =>f.Movie)
+                .Where(f => f.UserId == id).ToListAsync(); 
 
             return Favorites;
         }
@@ -38,7 +41,6 @@ namespace Infrastructure.Repositories
         public async Task<Favorite> GetFavoriteById(int id, int movieId)
         {
             var favorite = await _movieshopDbContext.Favorites
-              .Include(m=>m.MovieId)
               .FirstOrDefaultAsync(m => m.UserId == id && m.MovieId == movieId);
             return favorite;
         }

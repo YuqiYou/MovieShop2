@@ -26,18 +26,27 @@ namespace Infrastructure.Services
 
 
         //FAVORITE
-        public async Task AddFavorite(FavoriteRequestModel favoriteRequest)
+        public async Task<bool> AddFavorite(FavoriteRequestModel favoriteRequest)
         {
-            
 
-            var favorite = new Favorite
+
+            var favorite = await _favoriteRepository.GetFavoriteById(favoriteRequest.UserId, favoriteRequest.MovieId);
+            if (favorite != null)
+            {
+                throw new Exception("Favorite exists");
+            }
+
+            var newFavorite = new Favorite
             {
                 MovieId = favoriteRequest.MovieId,
                 UserId = favoriteRequest.UserId
-  
             };
-
-            _favoriteRepository.AddFavorite(favorite);
+            var returned = await _favoriteRepository.AddFavorite(newFavorite);
+            if (returned.MovieId > 0)
+            {
+                return true;
+            }
+            return false;
         }
 
 
@@ -61,14 +70,27 @@ namespace Infrastructure.Services
 
             var FavoriteListModel = new List<FavoriteRequestModel>();
 
-            foreach (var Favorite in FavoriteList)
+            foreach(var item in FavoriteList)
             {
+                FavoriteListModel.Add(new FavoriteRequestModel
+                {
+                    MovieId = item.MovieId,
+                    UserId = item.UserId,
+                    MovieTitle = item.Movie.Title,
+                    PosterUrl = item.Movie.PosterUrl,
 
-                FavoriteListModel.Add(new FavoriteRequestModel {MovieId = Favorite.MovieId, UserId = Favorite.UserId });
+
+                });    
+                    
+                    
+
             }
-      
 
             return FavoriteListModel;
+
+
+         
+
         }
 
         public async Task RemoveFavorite(FavoriteRequestModel favoriteRequest)

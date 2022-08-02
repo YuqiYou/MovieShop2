@@ -15,7 +15,7 @@ namespace ApplicationCore.ServiceContracts
         Task IsMoviePurchased(PurchaseRequestModel purchaseRequest, int userId);
         Task GetAllPurchasesForUser(int id);
         Task GetPurchasesDetails(int userId, int movieId);
-        Task AddFavorite(FavoriteRequestModel favoriteRequest);
+        Task<bool> AddFavorite(FavoriteRequestModel favoriteRequest);
         Task RemoveFavorite(FavoriteRequestModel favoriteRequest);
         Task<bool> FavoriteExists(int id, int movieId);
         Task <List<FavoriteRequestModel>> GetAllFavoritesForUser(int id);

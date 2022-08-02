@@ -25,14 +25,24 @@
 
 
             <button style="text-align:left;" type="button" class="btn btn-primary" color="white">
-               Rating
+                Rating
             </button>
 
             <br />
             <h6 style="text-align:left;">@Model.Overview </h6>
 
         </div>
+
+
+
         <div class="col">
+
+            <a asp-controller="User" asp-action='FavoriteMovie' asp-route-id="@Model.Id">
+                <button type="button" class="btn btn-primary">FAVORITE THIS MOVIE</button>
+            </a>
+
+            <br />
+            <br />
 
 
 
