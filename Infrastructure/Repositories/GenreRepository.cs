@@ -20,9 +20,9 @@ namespace Infrastructure.Repositories
             _movieshopDbContext = movieshopDbContext;
         }
 
-        public Task<List<Genre>> GetAllGenres()
+        public async Task<List<Genre>> GetAllGenres()
         {
-            var genres = _movieshopDbContext.Genres.ToListAsync();
+            var genres = await _movieshopDbContext.Genres.ToListAsync();
             return genres;
         }
     }

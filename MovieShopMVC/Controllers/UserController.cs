@@ -10,11 +10,12 @@ namespace MovieShopMVC.Controllers
     public class UserController : Controller
     {
         private readonly ICurrentUser _currentUser;
-        //private readonly IUserService _userService;
+        private readonly IUserService _userService;
 
-        public UserController(ICurrentUser currentUser)
+        public UserController(ICurrentUser currentUser, IUserService userService)
         {
             _currentUser = currentUser;
+            _userService = userService;
         }
 
         [HttpGet]
@@ -29,8 +30,13 @@ namespace MovieShopMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Favorites()
         {
+
             var userId = _currentUser.UserId;
-            return View();
+
+            var favoriteListModel = await  _userService.GetAllFavoritesForUser(userId);
+
+
+            return View(favoriteListModel);
         }
 
         [HttpGet]

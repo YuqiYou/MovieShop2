@@ -54,12 +54,21 @@ namespace Infrastructure.Services
             }
         }
 
-        public async Task<List<Favorite>> GetAllFavoritesForUser(int id)
+        public async Task<List<FavoriteRequestModel>> GetAllFavoritesForUser(int id)
         {
 
             var FavoriteList = await _favoriteRepository.getAllFavorites(id);
 
-            return FavoriteList;
+            var FavoriteListModel = new List<FavoriteRequestModel>();
+
+            foreach (var Favorite in FavoriteList)
+            {
+
+                FavoriteListModel.Add(new FavoriteRequestModel {MovieId = Favorite.MovieId, UserId = Favorite.UserId });
+            }
+      
+
+            return FavoriteListModel;
         }
 
         public async Task RemoveFavorite(FavoriteRequestModel favoriteRequest)
