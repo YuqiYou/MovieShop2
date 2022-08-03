@@ -64,3 +64,4 @@ C:\Users\16263\source\repos\MovieShop\MovieShopAPI\obj\Debug\net6.0\MovieShopAPI
 C:\Users\16263\source\repos\MovieShop\MovieShopAPI\obj\Debug\net6.0\MovieShopAPI.genruntimeconfig.cache
 C:\Users\16263\source\repos\MovieShop\MovieShopAPI\obj\Debug\net6.0\ref\MovieShopAPI.dll
 C:\Users\16263\source\repos\MovieShop\MovieShopAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\16263\source\repos\MovieShop\MovieShopAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

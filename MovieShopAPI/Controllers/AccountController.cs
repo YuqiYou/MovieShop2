@@ -49,7 +49,9 @@ namespace MovieShopAPI.Controllers
                 return Ok(new { token = token });
             }
 
-            return Unauthorized(new { ErrorMessage = "Please check email and password" });
+            throw new UnauthorizedAccessException("Please check email and password");
+            // return Unauthorized(new { ErrorMessage = "Please check email and password" });
+
             //IOS() ,  Android,Angular,React,Java
             //Token, JWT(Json Web Token)
             //Client will send email/password to API
