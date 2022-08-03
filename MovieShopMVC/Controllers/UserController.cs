@@ -20,7 +20,7 @@ namespace MovieShopMVC.Controllers
         {
             _currentUser = currentUser;
             _userService = userService;
-  
+            
         }
 
         [HttpGet]
@@ -29,26 +29,25 @@ namespace MovieShopMVC.Controllers
             // get all the movies purchased by user , user id
             // httpcontext.user.claims and then call the database and get the inforamtion to the view
 
-            return View();
-            //var userId = _currentUser.UserId;
+            var userId = _currentUser.UserId;
 
-            //var PurchaseListModel = await _userService.GetAllPurchasesForUser(userId);
+            var PurchaseListModel = await _userService.GetAllPurchasesForUser(userId);
 
-            //var MovieCardList = new List<MovieCardModel>();
+            var MovieCardList = new List<MovieCardModel>();
 
-            //foreach (var purchase in PurchaseListModel)
-            //{
+            foreach (var purchase in PurchaseListModel)
+            {
 
-            //    MovieCardList.Add(new MovieCardModel
-            //    {
-            //        Id = purchase.MovieId,
-            //        Title = purchase.MovieTitle,
-            //        PosterUrl = Favorite.PosterUrl
+                MovieCardList.Add(new MovieCardModel
+                {
+                    Id = purchase.MovieId,
+                  //  Title = purchase.MovieTitle,
+                  //  PosterUrl = Favorite.PosterUrl
 
-            //    });
-            //}
+                });
+            }
 
-            //return View(MovieCardList);
+            return View(MovieCardList);
 
         }
 

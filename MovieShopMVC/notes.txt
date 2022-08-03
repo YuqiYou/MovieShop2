@@ -259,3 +259,6 @@ My Account or Edit Profile, View Purchased, View Favorites
 
 You can use any builtin middlewares Authentication middleware, 
 Create your own custom middleware
+
+
+200 ok, 201 created, 400 bad request, 401 unauthorized, 500 server problem. 404 not found

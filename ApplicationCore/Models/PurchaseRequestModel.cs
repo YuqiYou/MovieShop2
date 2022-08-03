@@ -14,5 +14,9 @@ namespace ApplicationCore.Models
         public int UserId { get; set; }
 
 
+        public String MovieTitle { get; set; }
+
+        public String PosterUrl { get; set; }
+
     }
 }

@@ -13,7 +13,7 @@ namespace ApplicationCore.ServiceContracts
 
         Task PurchaseMovie(PurchaseRequestModel purchaseRequest, int userId);
         Task IsMoviePurchased(PurchaseRequestModel purchaseRequest, int userId);
-        Task GetAllPurchasesForUser(int id);
+        Task<List<PurchaseRequestModel>> GetAllPurchasesForUser(int id);
         Task GetPurchasesDetails(int userId, int movieId);
         Task<bool> AddFavorite(FavoriteRequestModel favoriteRequest);
         Task RemoveFavorite(FavoriteRequestModel favoriteRequest);

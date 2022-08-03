@@ -22,6 +22,9 @@ namespace Infrastructure.Services
         public  async Task<CastModel> GetCastDetails(int id)
         {
             var Moviecasts = await _castRepository.GetById(id);
+
+            if(Moviecasts == null) { return null; }
+
             var castModel = new CastModel
             {
 

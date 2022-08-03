@@ -16,11 +16,13 @@ namespace Infrastructure.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly IFavoriteRepository _favoriteRepository;
+        private readonly IPurchaseRepository _purchaseRepository;
 
-        public UserService(IUserRepository userRepository, IFavoriteRepository favoriteRepository)
+        public UserService(IUserRepository userRepository, IFavoriteRepository favoriteRepository, IPurchaseRepository purchaseRepository)
         {
             _userRepository = userRepository;
             _favoriteRepository = favoriteRepository;
+            _purchaseRepository = purchaseRepository;
         }
 
 
@@ -123,9 +125,28 @@ namespace Infrastructure.Services
 
 
         //Purchase 
-        public Task GetAllPurchasesForUser(int id)
+        public async Task<List<PurchaseRequestModel>> GetAllPurchasesForUser(int id)
         {
-            throw new NotImplementedException();
+            var purchaseList = await _purchaseRepository.getAllPurchases(id);
+
+            var purchaseListModel = new List<PurchaseRequestModel>();
+
+            foreach (var item in purchaseList)
+            {
+                purchaseListModel.Add(new PurchaseRequestModel
+                {
+                    MovieId = item.MovieId,
+                    UserId = item.UserId,
+                    MovieTitle = item.Movie.Title,
+                    PosterUrl = item.Movie.PosterUrl,
+
+                });
+
+
+
+            }
+
+            return purchaseListModel;
         }
 
      
