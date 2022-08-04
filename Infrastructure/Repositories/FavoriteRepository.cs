@@ -26,6 +26,16 @@ namespace Infrastructure.Repositories
 
             return favorite;
         }
+        public async Task<Favorite> removeFavorite(Favorite favorite)
+        {
+
+
+            _movieshopDbContext.Favorites.Remove(favorite);
+            await _movieshopDbContext.SaveChangesAsync();
+
+            return favorite;
+        }
+
 
         //PASSED
         public async Task<List<Favorite>> getAllFavorites(int id)
@@ -45,14 +55,6 @@ namespace Infrastructure.Repositories
             return favorite;
         }
 
-        public async Task removeFavorite(int movieId, int userId)
-        {
-            var favorite = await GetFavoriteById(movieId, userId);
-
-
-            _movieshopDbContext.Favorites.Remove(favorite);
-            await _movieshopDbContext.SaveChangesAsync();
-
-        }
+  
     }
 }

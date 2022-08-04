@@ -10,6 +10,6 @@ namespace Infrastructure.Repositories
         Task<Favorite> GetFavoriteById(int id, int movieId);
 
         Task<List<Favorite>> getAllFavorites(int id);
-        Task removeFavorite(int movieId, int userId);
+        Task <Favorite> removeFavorite(Favorite favorite);
     }
 }

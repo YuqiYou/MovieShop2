@@ -12,15 +12,17 @@ namespace MovieShopMVC.Controllers
     {
         private readonly ICurrentUser _currentUser;
         private readonly IUserService _userService;
-        //private readonly IHttpContextAccessor _contextAccessor;
-        //private readonly ILogger<UserController> _logger;
+        private readonly IHttpContextAccessor _contextAccessor;
+        private readonly ILogger<UserController> _logger;
 
 
-        public UserController(ICurrentUser currentUser, IUserService userService)
+        public UserController(ICurrentUser currentUser, IUserService userService, IHttpContextAccessor contextAccessor, ILogger<UserController> logger)
         {
             _currentUser = currentUser;
             _userService = userService;
-            
+            _contextAccessor = contextAccessor;
+            _logger = logger;
+
         }
 
         [HttpGet]
@@ -41,8 +43,8 @@ namespace MovieShopMVC.Controllers
                 MovieCardList.Add(new MovieCardModel
                 {
                     Id = purchase.MovieId,
-                  //  Title = purchase.MovieTitle,
-                  //  PosterUrl = Favorite.PosterUrl
+                    Title = purchase.MovieTitle,
+                    PosterUrl = purchase.PosterUrl
 
                 });
             }
@@ -50,6 +52,28 @@ namespace MovieShopMVC.Controllers
             return View(MovieCardList);
 
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Purchase(PurchaseRequestModel model, int userId)
+        {
+            ICurrentUser currentUser = new CurrentUser(_contextAccessor);
+            if (currentUser.IsAuthenticated == false)
+            {
+                return LocalRedirect("~/Account/Login");
+            }
+            await _userService.PurchaseMovie(model, userId);
+            return LocalRedirect("~/Movies/Details/" + model.MovieId);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetPurchaseDetails(int userId, int movieId)
+        {
+            var details = await _userService.GetPurchaseDetails(userId, movieId);
+            return PartialView("_PurchaseDetails", details);
+        }
+
 
         [HttpGet]
 
@@ -79,21 +103,45 @@ namespace MovieShopMVC.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> FavoriteMovie(int movieId)
+        public async Task<IActionResult> FavoriteMovie(int id)
         {
-         if (await _userService.FavoriteExists(_currentUser.UserId, movieId)) {
+         if (await _userService.FavoriteExists(_currentUser.UserId, id)) {
                 throw new Exception("Favorite already exists!");
             }
 
 
             var favoriteReq = new FavoriteRequestModel{
-                MovieId = movieId,
+                MovieId = id,
                 UserId = _currentUser.UserId
             };
 
             await _userService.AddFavorite(favoriteReq);
-            return LocalRedirect("~/Movies/Details/" + movieId);
+            return LocalRedirect("~/Movies/Details/" + id);
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveFavorite(int id)
+        {
+            if (!await _userService.FavoriteExists(_currentUser.UserId, id))
+            {
+                throw new Exception("Favorite never exists!");
+            }
+
+
+            var favoriteReq = new FavoriteRequestModel
+            {
+                MovieId = id,
+                UserId = _currentUser.UserId
+            };
+
+            await _userService.RemoveFavorite(favoriteReq);
+            return LocalRedirect("~/Movies/Details/" + id);
+        }
+
+
+
+
 
 
 

@@ -34,7 +34,15 @@ namespace Infrastructure.Repositories
             return user;
         }
 
-        
+
+        public async Task<User> GetUserById(int id)
+        {
+            var user = await _movieshopDbContext.Users.Include(u => u.RolesOfUser)
+            .FirstOrDefaultAsync(u => u.Id == id);
+            return user;
+        }
+
+
 
     }
 }

@@ -13,10 +13,11 @@ namespace ApplicationCore.Models
         public int MovieId { get; set; }
         public int UserId { get; set; }
 
-
-        public String MovieTitle { get; set; }
-
+        public decimal? TotalPrice { get; set; }
         public String PosterUrl { get; set; }
+
+
+        public string MovieTitle { get; set; }
 
     }
 }

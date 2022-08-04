@@ -1,4 +1,5 @@
-﻿using ApplicationCore.ServiceContracts;
+﻿using ApplicationCore.Models;
+using ApplicationCore.ServiceContracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -49,6 +50,19 @@ namespace MovieShopAPI.Controllers
 
 
         [HttpGet]
+        [Route("top-rated")]
+        public async Task<IActionResult> GetTopRatedMovies()
+        {
+            var movies = await _movieService.GetTopRatedMovies();
+            if (movies == null || !movies.Any())
+            {
+                return NotFound(new { errorMessage = "No Movies Found" });
+            }
+            return Ok(movies);
+        }
+
+
+        [HttpGet]
         [Route("{Id:int}")]
         public async Task<IActionResult> GetMovie(int Id)
         {
@@ -69,12 +83,38 @@ namespace MovieShopAPI.Controllers
         //{
         //    var movies = await _movieService.GetMoviesByPagination(genreId, pageSize, page);
 
-        //       if(movies == null) { return NotFound(new { errorMessage = "No Movies Found" }); }
+        //    if (movies == null) { return NotFound(new { errorMessage = "No Movies Found" }); }
 
-        //       return Ok(movies);
+        //    return Ok(movies);
 
         //}
 
+
+        /// <summary>
+        ///     Get collection of movies by pagination and search term for movie title
+        ///     default page size is 30
+        /// </summary>
+        /// <param name="pageSize"></param>
+        /// <param name="page"></param>
+        /// <param name="title"></param>
+        /// <returns></returns>
+        /// 
+        //[HttpGet]
+        //[Route("")]
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //[ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorModel))]
+        //public async Task<ActionResult<PagedResultSet<MovieCardModel>>> GetAllMovies([FromQuery] int pageSize = 30,
+        //    [FromQuery] int page = 1,
+        //    string title = "")
+        //{
+        //    var movies = await _movieService.GetMoviesByPagination(title, pageSize, page);
+        //    if (movies?.Data?.Any() == false)
+        //    {
+        //        return NotFound(new ErrorModel { Message = "No movies found for search query" });
+        //    }
+
+        //    return Ok(movies);
+        //}
 
     }
 }

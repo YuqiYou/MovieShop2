@@ -52,7 +52,32 @@ namespace Infrastructure.Services
         }
 
 
-       
+
+        public async Task<bool> RemoveFavorite(FavoriteRequestModel favoriteRequest)
+        {
+
+            var favorite1 = await _favoriteRepository.GetFavoriteById(favoriteRequest.UserId, favoriteRequest.MovieId);
+            if (favorite1 == null)
+            {
+                throw new Exception("Favorite not exists");
+            }
+
+            var favorite = new Favorite
+            {
+                MovieId = favoriteRequest.MovieId,
+                UserId = favoriteRequest.UserId
+            };
+            var returned = await _favoriteRepository.removeFavorite(favorite);
+            if (returned != null)
+            {
+                return true;
+            }
+            return false;
+
+        }
+
+
+
         public async Task<bool> FavoriteExists(int id, int movieId)
         {
             var favorite = await _favoriteRepository.GetFavoriteById(id,movieId);
@@ -81,24 +106,12 @@ namespace Infrastructure.Services
                     MovieTitle = item.Movie.Title,
                     PosterUrl = item.Movie.PosterUrl,
 
-
                 });    
-                    
-                    
-
             }
-
             return FavoriteListModel;
 
-
-         
-
         }
 
-        public async Task RemoveFavorite(FavoriteRequestModel favoriteRequest)
-        {
-            await _favoriteRepository.removeFavorite(favoriteRequest.MovieId, favoriteRequest.UserId);
-        }
 
 
         //REVIEW
@@ -141,31 +154,78 @@ namespace Infrastructure.Services
                     PosterUrl = item.Movie.PosterUrl,
 
                 });
-
-
-
             }
-
             return purchaseListModel;
         }
 
-     
-        public Task GetPurchasesDetails(int userId, int movieId)
+        public async Task<bool> PurchaseMovie(PurchaseRequestModel purchaseRequest, int userId)
         {
-            throw new NotImplementedException();
+            var purchase = await _purchaseRepository.GetByUserMovie(userId, purchaseRequest.MovieId);
+            if (purchase != null)
+            {
+                throw new Exception("User has already purchased this movie!");
+            }
+            var dbPurchase = new Purchase
+            {
+                UserId = userId,
+                TotalPrice = (decimal)purchaseRequest.TotalPrice,
+                PurchaseDateTime = purchaseRequest.PurchaseDateTime,
+                MovieId = purchaseRequest.MovieId
+            };
+            var newPurchase = await _purchaseRepository.AddPurchase(dbPurchase);
+            if (newPurchase.UserId > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+     public async Task<PurchaseRequestModel> GetPurchaseDetails(int userId, int movieId)
+        {
+            var purchase = await _purchaseRepository.GetByUserMovie(userId, movieId);
+
+            if (purchase == null) { return null; }
+            return new PurchaseRequestModel
+            {
+                TotalPrice = purchase.TotalPrice,
+                MovieId = purchase.MovieId,
+                PosterUrl = purchase.Movie.PosterUrl
+            };
         }
 
-        public Task IsMoviePurchased(PurchaseRequestModel purchaseRequest, int userId)
+        public async Task<bool> IsMoviePurchased(PurchaseRequestModel purchaseRequest, int userId)
         {
-            throw new NotImplementedException();
+            var purchase = await _purchaseRepository.GetByUserMovie(userId, purchaseRequest.MovieId);
+            if (purchase == null)
+            {
+                return false;
+            }
+            return true;
         }
 
-        public Task PurchaseMovie(PurchaseRequestModel purchaseRequest, int userId)
+        public async Task<UserModel> GetUserById(int userId)
         {
-            throw new NotImplementedException();
+            var user = await _userRepository.GetUserById(userId);
+            if (user == null)
+            {
+                throw new Exception($"Unable to locate user with id={userId}");
+            }
+            var roles = new List<Role>();
+            foreach (var role in user.RolesOfUser)
+            {
+                roles.Add(role.Role);
+            }
+            var userModel = new UserModel
+            {
+                Id = user.Id,
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                DateOfBirth = user.DateOfBirth,
+                phoneNumber = user.PhoneNumber,
+                profilePictureUrl = user.ProfilePictureUrl,
+                roles = roles
+            };
+            return userModel;
         }
-
-     
- 
     }
 }

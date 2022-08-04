@@ -23,6 +23,9 @@ public class MovieRepository : IMovieRepository
             .Include(m => m.CastsOfMovie).ThenInclude(m => m.Cast)
             .Include(m => m.Trailers)
             .FirstOrDefaultAsync(m => m.Id == id);
+
+       // var rating = await _movieShopDbContext.
+
         return movieDetails;
     }
 
@@ -61,10 +64,33 @@ public class MovieRepository : IMovieRepository
         return movies;
     }
 
-    public Task<List<Movie>> GetTop30RatedMovies()
+
+    public async Task<List<Movie>> GetTop30RatedMovies()
     {
-        throw new NotImplementedException();
+        var movies = await _movieShopDbContext.Movies.OrderByDescending(m => m.Rating)
+             .Take(30)
+             .ToListAsync();
+        return movies;
     }
+
+
+    //public async Task<GenreModel<Movie>> GetByGenre(int genreId, int page = 1, int pageSize = 30)
+    //{
+    //    var genreCount = await _movieShopDbContext.MovieGenres.Where(g => g.GenreId == genreId).CountAsync();
+    //    var genreName = await _movieShopDbContext.Genres.Where(g => g.Id == genreId).Select(g => g.Name).FirstOrDefaultAsync();
+    //    if (genreCount == 0)
+    //    {
+    //        throw new Exception("No movies found in that genre!");
+    //    }
+
+    //    var movies = await _movieShopDbContext.Movies
+    //        .Include(m => m.GenresOfMovie)
+    //        .Where(m => m.GenresOfMovie.Any(g => g.GenreId == genreId)).Skip((page - 1) * pageSize).Take(pageSize)
+    //        .ToListAsync();
+
+    //    return new GenreModel<Movie>(genreName, movies, page, pageSize, genreCount);
+    //}
+
 
 
 }

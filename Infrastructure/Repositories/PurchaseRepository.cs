@@ -27,5 +27,26 @@ namespace Infrastructure.Repositories
 
             return Purchase;
         }
+
+
+        public async Task<Purchase> AddPurchase(Purchase purchase)
+        {
+            _movieshopDbContext.Purchases.Add(purchase);
+            await _movieshopDbContext.SaveChangesAsync();
+            return purchase;
+        }
+
+
+
+        public async Task<Purchase> GetByUserMovie(int userId, int movieId)
+        {
+            var purchase = await _movieshopDbContext.Purchases
+            .Include(p => p.Movie)
+            .FirstOrDefaultAsync(p => p.UserId == userId && p.MovieId == movieId);
+            return purchase;
+        }
+
+
+
     }
 }
