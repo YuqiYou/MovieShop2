@@ -76,45 +76,43 @@ namespace MovieShopAPI.Controllers
 
         }
 
+        [HttpGet]
+        [Route("")]
+        public async Task<IActionResult> SearchMovies(string title, int page = 1, int pageSize = 30)
+        {
+            var pagedSearchSet = await _movieService.GetMoviesBySearch(title, page, pageSize);
+            if (pagedSearchSet == null || pagedSearchSet.TotalRowCount == 0)
+            {
+                return NotFound(new { errorMessage = "No movies found in that genre" });
+            }
+            return Ok(pagedSearchSet);
 
-        //[HttpGet]
-        //[Route("{genreId:int/pageSize:int/page:int }")]
-        //public async Task<IActionResult> GetMovieByPagination(int genreId, int pageSize = 30, int page = 1)
-        //{
-        //    var movies = await _movieService.GetMoviesByPagination(genreId, pageSize, page);
-
-        //    if (movies == null) { return NotFound(new { errorMessage = "No Movies Found" }); }
-
-        //    return Ok(movies);
-
-        //}
+        }
 
 
-        /// <summary>
-        ///     Get collection of movies by pagination and search term for movie title
-        ///     default page size is 30
-        /// </summary>
-        /// <param name="pageSize"></param>
-        /// <param name="page"></param>
-        /// <param name="title"></param>
-        /// <returns></returns>
-        /// 
-        //[HttpGet]
-        //[Route("")]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorModel))]
-        //public async Task<ActionResult<PagedResultSet<MovieCardModel>>> GetAllMovies([FromQuery] int pageSize = 30,
-        //    [FromQuery] int page = 1,
-        //    string title = "")
-        //{
-        //    var movies = await _movieService.GetMoviesByPagination(title, pageSize, page);
-        //    if (movies?.Data?.Any() == false)
-        //    {
-        //        return NotFound(new ErrorModel { Message = "No movies found for search query" });
-        //    }
+        [HttpGet]
+        [Route("Genre/{genreId:int}")]
+        public async Task<IActionResult> GetMoviesByGenre(int genreId, int page = 1, int pageSize = 30)
+        {
+            var pagedGenreSet = await _movieService.GetMoviesByGenre(genreId, page, pageSize);
+            if (pagedGenreSet == null || pagedGenreSet.TotalRowCount == 0)
+            {
+                return NotFound(new { errorMessage = "No movies found in that genre" });
+            }
+            return Ok(pagedGenreSet);
+        }
 
-        //    return Ok(movies);
-        //}
+        [HttpGet]
+        [Route("{id:int}/reviews")]
+        public async Task<IActionResult> GetMovieReviews(int id)
+        {
+            var pagedReviewSet = await _movieService.GetReviewsByMovie(id);
+            if (pagedReviewSet == null || pagedReviewSet.TotalRowCount == 0)
+            {
+                return NotFound(new { errorMessage = "No reviews found for that movie" });
+            }
+            return Ok(pagedReviewSet);
+        }
 
     }
 }

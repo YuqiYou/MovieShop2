@@ -18,5 +18,6 @@ namespace ApplicationCore.Models
         public string profilePictureUrl { get; set; }
         public List<Role> roles { get; set; }
 
+        public Boolean isAdmin { get; set; }
     }
 }

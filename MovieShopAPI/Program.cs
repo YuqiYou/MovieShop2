@@ -73,12 +73,18 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+
 app.UseMovieShopExceptionMiddleware(); 
 app.UseHttpsRedirection();
 
 
 //make sure you add Authentication middleWare
 
+app.UseCors(policy =>
+{
+    policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader().AllowCredentials();
+});
 app.UseAuthentication();
 app.UseAuthorization();
 

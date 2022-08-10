@@ -62,12 +62,7 @@ namespace Infrastructure.Services
                 throw new Exception("Favorite not exists");
             }
 
-            var favorite = new Favorite
-            {
-                MovieId = favoriteRequest.MovieId,
-                UserId = favoriteRequest.UserId
-            };
-            var returned = await _favoriteRepository.removeFavorite(favorite);
+            var returned = await _favoriteRepository.removeFavorite(favorite1);
             if (returned != null)
             {
                 return true;

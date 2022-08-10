@@ -3,6 +3,7 @@ using ApplicationCore.Models;
 using ApplicationCore.RepositoryContracts;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 namespace Infrastructure.Repositories;
 
@@ -73,23 +74,55 @@ public class MovieRepository : IMovieRepository
         return movies;
     }
 
+    public async Task<SearchPageModel<Movie>> GetByTitle(string title, int page = 1, int pageSize = 30)
+    {
+        var pattern = @"\b.*" + title + @".*\b";
+        var regex = new Regex(pattern, RegexOptions.IgnoreCase);
 
-    //public async Task<GenreModel<Movie>> GetByGenre(int genreId, int page = 1, int pageSize = 30)
-    //{
-    //    var genreCount = await _movieShopDbContext.MovieGenres.Where(g => g.GenreId == genreId).CountAsync();
-    //    var genreName = await _movieShopDbContext.Genres.Where(g => g.Id == genreId).Select(g => g.Name).FirstOrDefaultAsync();
-    //    if (genreCount == 0)
-    //    {
-    //        throw new Exception("No movies found in that genre!");
-    //    }
+        /*var hits = await _movieShopDbContext.Movies.Where(m => regex.IsMatch(m.Title)).ToListAsync();*/
+        var hits = await _movieShopDbContext.Movies.Where(m => m.Title.Contains(title)).CountAsync();
+        if (hits == 0)
+        {
+            throw new Exception("No movies found matching that title");
+        }
 
-    //    var movies = await _movieShopDbContext.Movies
-    //        .Include(m => m.GenresOfMovie)
-    //        .Where(m => m.GenresOfMovie.Any(g => g.GenreId == genreId)).Skip((page - 1) * pageSize).Take(pageSize)
-    //        .ToListAsync();
+        /*var movies = await _movieShopDbContext.Movies.Where(m => regex.IsMatch(m.Title)).Skip((page - 1) * pageSize).Take(pageSize)
+            .ToListAsync();*/
+        var movies = await _movieShopDbContext.Movies.Where(m => m.Title.Contains(title)).Skip((page - 1) * pageSize).Take(pageSize)
+            .ToListAsync();
 
-    //    return new GenreModel<Movie>(genreName, movies, page, pageSize, genreCount);
-    //}
+        return new SearchPageModel<Movie>(title, movies, page, pageSize, hits);
+    }
+
+
+    public async Task<GenrePageModel<Movie>> GetByGenre(int genreId, int page = 1, int pageSize = 30)
+    {
+        var genreCount = await _movieShopDbContext.MovieGenres.Where(g => g.GenreId == genreId).CountAsync();
+        var genreName = await _movieShopDbContext.Genres.Where(g => g.Id == genreId).Select(g => g.Name).FirstOrDefaultAsync();
+        if (genreCount == 0)
+        {
+            throw new Exception("No movies found in that genre!");
+        }
+
+        var movies = await _movieShopDbContext.Movies
+            .Include(m => m.GenresOfMovie)
+            .Where(m => m.GenresOfMovie.Any(g => g.GenreId == genreId)).Skip((page - 1) * pageSize).Take(pageSize)
+            .ToListAsync();
+
+        return new GenrePageModel<Movie>(genreName, movies, page, pageSize, genreCount);
+    }
+
+    public async Task<ReviewPageModel<Review>> GetMovieReviews(int movieId, int page = 1, int pageSize = 1)
+    {
+        var reviews = await _movieShopDbContext.Reviews.Include(r => r.Movie)
+        .Where(r => r.MovieId == movieId)
+        .OrderByDescending(r => r.CreatedDate)
+        .Skip((page - 1) * pageSize).Take(pageSize)
+        .ToListAsync();
+        return new ReviewPageModel<Review>(reviews.First().Movie.Title, reviews, page, pageSize, reviews.Count());
+    }
+
+
 
 
 

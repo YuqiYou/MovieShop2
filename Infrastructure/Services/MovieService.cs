@@ -115,35 +115,47 @@ namespace Infrastructure.Services
 
 
 
-        //public async Task<SearchPageModel<MovieCardModel>> GetMoviesBySearch(string title, int page = 1, int pageSize = 30)
-        //{
-        //    var movies = await _movieRepository.GetByTitle(title, page, pageSize);
-        //    var movieCards = new List<MovieCardModel>();
-        //    foreach (var movie in movies.Data)
-        //    {
-        //        movieCards.Add(new MovieCardModel { Id = movie.Id, Title = movie.Title, PosterUrl = movie.PosterUrl });
-        //    }
-        //    return new SearchPageModel<MovieCardModel>(movies.Name, movieCards, page, pageSize, movies.TotalRowCount);
-        //}
+        public async Task<SearchPageModel<MovieCardModel>> GetMoviesBySearch(string title, int page = 1, int pageSize = 30)
+        {
+            var movies = await _movieRepository.GetByTitle(title, page, pageSize);
+            var movieCards = new List<MovieCardModel>();
+            foreach (var movie in movies.Data)
+            {
+                movieCards.Add(new MovieCardModel { Id = movie.Id, Title = movie.Title, PosterUrl = movie.PosterUrl });
+            }
+            return new SearchPageModel<MovieCardModel>(movies.Name, movieCards, page, pageSize, movies.TotalRowCount);
+        }
 
-        //public async Task<ReviewPageModel<ReviewModel>> GetReviewsByMovie(int movieId, int page = 1, int pageSize = 30)
-        //{
-        //    var reviews = await _movieRepository.GetMovieReviews(movieId, page, pageSize);
-        //    if (reviews == null) { return null; }
-        //    var ReviewModels = new List<ReviewModel>();
-        //    foreach (var review in reviews.Data)
-        //    {
-        //        ReviewModels.Add(new ReviewModel
-        //        {
-        //            userId = review.UserId,
-        //            movieId = movieId,
-        //            title = reviews.Name,
-        //            rating = review.Rating,
-        //            reviewText = review.ReviewText
-        //        });
-        //    }
-        //    return new ReviewPageModel<ReviewModel>(ReviewModels.First().title, ReviewModels, page, pageSize, reviews.TotalRowCount);
-        //}
+        public async Task<ReviewPageModel<ReviewModel>> GetReviewsByMovie(int movieId, int page = 1, int pageSize = 30)
+        {
+            var reviews = await _movieRepository.GetMovieReviews(movieId, page, pageSize);
+            if (reviews == null) { return null; }
+            var ReviewModels = new List<ReviewModel>();
+            foreach (var review in reviews.Data)
+            {
+                ReviewModels.Add(new ReviewModel
+                {
+                    userId = review.UserId,
+                    movieId = movieId,
+                    title = reviews.Name,
+                    rating = review.Rating,
+                    reviewText = review.ReviewText
+                });
+            }
+            return new ReviewPageModel<ReviewModel>(ReviewModels.First().title, ReviewModels, page, pageSize, reviews.TotalRowCount);
+        }
+
+        public async Task<GenrePageModel<MovieCardModel>> GetMoviesByGenre(int genreId, int page = 1, int pageSize = 30)
+        {
+            var movies = await _movieRepository.GetByGenre(genreId, page, pageSize);
+            var movieCards = new List<MovieCardModel>();
+            foreach (var movie in movies.Data)
+            {
+                movieCards.Add(new MovieCardModel { Id = movie.Id, Title = movie.Title, PosterUrl = movie.PosterUrl });
+            }
+            return new GenrePageModel<MovieCardModel>(movies.Name, movieCards, page, pageSize, movies.TotalRowCount);
+        }
+
 
 
 
